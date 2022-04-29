@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/main_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메인페이지"
+
+            >
+
+        </TextView>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/main_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_header"
+        android:layout_above="@+id/main_footer"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="50dp"
+        android:weightSum="3"
+        >
+
+        <Button
+            android:id="@+id/exercise_list_entire_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="exercise_entire_list"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            >
+
+        </Button>
+
+        <Button
+            android:id="@+id/exercise_list_lower_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="exercise_lower_list"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            >
+
+        </Button>
+
+        <Button
+            android:id="@+id/exercise_list_ab_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="exercise_ab_list"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            >
+
+        </Button>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/main_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:weightSum="3">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="훈련"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+        ></Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="일정관리"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            ></Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="설정"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            ></Button>
+
+    </LinearLayout>
+
+</RelativeLayout>
