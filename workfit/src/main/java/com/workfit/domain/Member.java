@@ -1,5 +1,6 @@
 package com.workfit.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,20 +21,23 @@ public class Member {
     private String provider;
     private String providerId;
     private String userName;
+    private String gender;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "physical_id")
-    private Physical physical;
+    @Embedded
+    private BodyInfo bodyInfo;
 
-    @OneToMany(mappedBy = "member") // order 테이블의 member에 매핑된 거울일 뿐이다
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "member")
     private List<Plan> plans = new ArrayList<>();
 
     /**
      * 연관관계 메소드
      */
 
-    public void setPhysical(Physical physical){
-        this.physical = physical;
-        physical.setMember(this); // Order 객체이므로 바로 setOrder()한다
+    public void addPlans(Plan plan){
+
+        plans.add(plan);
+        plan.setMember(this);
     }
 }

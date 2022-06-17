@@ -16,5 +16,9 @@ public class Exercise {
     private  Long id;
     private String exerciseName;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 
 }
