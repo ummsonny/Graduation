@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class PlanRepository {
@@ -24,6 +26,14 @@ public class PlanRepository {
 
     public Plan findOne(Long id){
         return em.find(Plan.class, id);
+    }
+
+    public Optional<Plan> findPlanByDate(LocalDate localDate){
+        List<Plan> plan = em.createQuery("select p from Plan p"+
+                        " where p.localDate =: localDate", Plan.class)
+                .setParameter("localDate", localDate)
+                .getResultList();
+        return plan.stream().findAny();
     }
 
     public List<Plan> findAllWithMember(int offset, int limit){
@@ -47,6 +57,17 @@ public class PlanRepository {
                 .getResultList();
     }
 
+    public List<Plan> findAllByUserPrincipal(String email, int offset, int limit) {
+        return em.createQuery(
+                        "select p from Plan p"+
+                                " join fetch p.member m"+
+                                " where m.email =: email", Plan.class)
+                .setParameter("email", email)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
     public List<Plan> findAllByUserIdDate(Long id, int offset, int limit, ReadPlanByDateDto readPlanByDateDto) {
         return em.createQuery(
                         "select p from Plan p"+
@@ -60,4 +81,5 @@ public class PlanRepository {
                 .setMaxResults(limit)
                 .getResultList();
     }
+
 }

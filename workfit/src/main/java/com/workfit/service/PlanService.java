@@ -8,7 +8,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -26,12 +29,18 @@ public class PlanService {
         return planRepository.findOne(planId);
     }
 
+    public Optional<Plan> findByPlanDate(LocalDate localDate) {return planRepository.findPlanByDate(localDate);}
+
     public List<Plan> findAllPlans(int offst, int limit){
         return planRepository.findAllWithMember(offst, limit);
     }
 
     public List<Plan> findAllByUserId(Long id, int offset, int limit) {
         return planRepository.findAllByUserId(id, offset, limit);
+    }
+
+    public List<Plan> findAllByUserPrincipal(String email, int offset, int limit){
+        return planRepository.findAllByUserPrincipal(email, offset, limit);
     }
 
     public List<Plan> findAllByUserIdDate(Long id, int offset, int limit, ReadPlanByDateDto readPlanByDateDto) {

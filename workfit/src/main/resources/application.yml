@@ -18,6 +18,9 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+  jwt:
+    secret: myprojectsecret
+
 
   jpa:
     hibernate:
@@ -34,4 +37,4 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
-#    org.hibernate.type: trace # sql실행시 파라미터 표현해준다.
+    org.hibernate.type: trace # sql실행시 파라미터 표현해준다.

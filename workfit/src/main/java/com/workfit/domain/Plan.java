@@ -67,8 +67,8 @@ public class Plan {
         for(PlanExercise planExercise : planExercises){
             plan.addPlanExercise(planExercise);
         }
-
         plan.setLocalDate(localDate);
+
         Double b = Math.pow(BigDecimal.valueOf(member.getBodyInfo().getHeight()).divide(new BigDecimal(100),2, RoundingMode.HALF_EVEN).doubleValue(),2);
         Double result = BigDecimal.valueOf(member.getBodyInfo().getWeight()).divide(new BigDecimal(b),2,RoundingMode.HALF_EVEN).doubleValue();
         plan.setBmi(result); //이거 오류난다.

@@ -57,7 +57,7 @@ public class PlanServiceTest {
         //then
         Plan findplan = planService.findOne(plan.getId());
 
-        assertEquals("강민우", findplan.getMember().getUserName());
+        assertEquals("강민우", findplan.getMember().getUsername());
         assertEquals("라잉레그레이즈", findplan.getPlanExercises().get(0).getExercise().getExerciseName());
         assertEquals(18, findplan.getPlanExercises().get(0).getReps());
 
@@ -94,7 +94,7 @@ public class PlanServiceTest {
         findplan.getPlanExercises().get(0).getExercise().setExerciseName("푸쉬업");
         findplan.update(12);
 
-        assertEquals("강민우", findplan.getMember().getUserName());
+        assertEquals("강민우", findplan.getMember().getUsername());
         assertEquals("푸쉬업", findplan.getPlanExercises().get(0).getExercise().getExerciseName());
         assertEquals(12L, findplan.getPlanExercises().get(0).getReps());
     }

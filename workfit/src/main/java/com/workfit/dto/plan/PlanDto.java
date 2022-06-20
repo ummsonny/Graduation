@@ -1,6 +1,7 @@
 package com.workfit.dto.plan;
 
 
+import com.workfit.domain.BodyInfo;
 import com.workfit.domain.Member;
 import com.workfit.domain.Plan;
 import com.workfit.domain.PlanExercise;
@@ -16,22 +17,24 @@ import java.util.stream.Collectors;
 @Data
 public class PlanDto {
 
-    private Long id;
-    private Member member;
-    private Long max_weight;
-    private Long min_weight;
+    //private Long id;
+    //private Member member;
+//    private Long max_weight;
+//    private Long min_weight;
+    //    private Double bmi;
     private LocalDate localDate;
-    private Double bmi;
+    private BodyInfo bodyInfo;
 
     private List<PlanExerciseDto> planExercises;
 
     public PlanDto(Plan plan){
-        this.id = plan.getId();
-        this.member = plan.getMember();
-        this.max_weight = plan.getMax_weight();
-        this.min_weight = plan.getMin_weight();
+        //this.id = plan.getId();
+        //this.member = plan.getMember();
+//        this.max_weight = plan.getMax_weight();
+//        this.min_weight = plan.getMin_weight();
+//        this.bmi = plan.getBmi();
         this.localDate = plan.getLocalDate();
-        this.bmi = plan.getBmi();
+        this.bodyInfo = plan.getMember().getBodyInfo();
 
         this.planExercises = plan.getPlanExercises().stream() //쿼리
                 .map(planExercise -> new PlanExerciseDto(planExercise))

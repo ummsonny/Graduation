@@ -18,8 +18,13 @@ public class MemberRepository {
         return member.getId();
     }
 
-    public Member findOne(Long id){
+    public Member findById(Long id){
         return em.find(Member.class, id);
+    }
+    public Member findByEmail(String email){
+        return em.createQuery("select m from Member m where m.email =: email",Member.class)
+                .setParameter("email",email)
+                .getSingleResult();
     }
 
     public List<Member> findAll(){
@@ -27,10 +32,15 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    public List<Member> findByName(String name){
+    public List<Member> findByNames(String name){
         return em.createQuery("select m from Member m where m.userName =: name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
     }
 
+    public Member findByName(String username) {
+        return em.createQuery("select m from Member m where m.userName =: username", Member.class)
+                .setParameter("username", username)
+                .getSingleResult();
+    }
 }

@@ -12,7 +12,7 @@ public class PlanExercise {
 
     @Id
     @GeneratedValue
-    @Column(name = "member_exercise_id")
+    @Column(name = "plan_exercise_id")
     private Long id;
 
     private int reps;
